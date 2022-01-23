@@ -81,9 +81,17 @@ sharpe.plot.bar(title = 'Sharpe Ratios Including S&P 500', figsize = (20,10), yl
 
 2. For beta, we created a variable, bh_beta, and calculate it with bh_cov just created divided by sp_sixty_var, the S&P 500 variance. We similarly preview the data with the tail() function. 
 
-3. We simply create a bhbeta_mean variable and assign it to bh_beta.rolling(window=60).mean(), using the tail() function to preview the mean values (Note: if you plotted this, it would appear as a smoothed-out version of the graph create in the next step). 
+3. We simply create a bhbeta_mean variable and assign it to bh_beta.rolling(window=60).mean(), using the tail() function to preview the mean values 
 
-4. Note: this only asks to plot the 60-day rolling beta, not average 60-day rolling beta. To do this, we take bh_beta with the plot() function with parameters of figsize, title (specific to Berkshire Hathaway), and ylabel. 
+4. We can do this two ways, we can either take bhmean_beta which is already set to a 60-day rolling window and get:
+
+bhmean_beta.plot(figsize = (20,15), title = '60-Day Rolling Beta for Berkshire Hathaway Inc', ylabel = 'Beta')
+
+or
+
+bh_beta.rolling(window=60).mean().plot(figsize = (20,15), title = '60-Day Rolling Beta for Berkshire Hathaway Inc', ylabel = 'Beta')
+
+the result is the same.
 
 ### Porfolio 2: Paulson & Co.Inc.
 
@@ -97,7 +105,7 @@ Followed by using the tail function on pco_cov.
 
 3. We create a pcomean_beta variable and assign it to pco_beta.rolling(window=60).mean(), followed by the tail function on pcomean_beta.
 
-4. Exactly like in Portfolio 1, we plot pco_beta with the .plot function and parameters (figsize = (20,15), title = '60-Day Rolling Beta for Paulson & co.Inc.', ylabel = 'Beta').
+4. Exactly like in Portfolio 1, we plot pcomean_beta with the .plot function and parameters (figsize = (20,15), title = '60-Day Rolling Beta for Paulson & co.Inc.', ylabel = 'Beta').
 
 5. For Questions 1 and 2 answers, please refer to the risk_return_analysis notebook. 
 
