@@ -73,5 +73,32 @@ sharpe.plot.bar(title = 'Sharpe Ratios Including S&P 500', figsize = (20,10), yl
 
 ## Diversify the Portfolio 
 
+1. We first create a variable, sp_sixty_var, for the variance using a 60-day rolling window. We assign this variable to whale_navs_dr['S&P 500'] to specifically use the S&P column, This is followed by .rolling(window=60).var() to establish the rolling window of 60 days and calculate variance. We preview this with the tail() function (no data in beginning with rolling windows)
+
+### Portfolio 1: Berkshire Hathaway Inc. 
+
+1. For covariance, we follow the above step closely, but replace .var with .cov and 'S&P 500' with 'BERKSHIRE HATHAWAY INC'. we assigned this to variable bh_cov and previewed it with the tail() function.
+
+2. For beta, we created a variable, bh_beta, and calculate it with bh_cov just created divided by sp_sixty_var, the S&P 500 variance. We similarly preview the data with the tail() function. 
+
+3. We simply create a bhbeta_mean variable and assign it to bh_beta.rolling(window=60).mean(), using the tail() function to preview the mean values (Note: if you plotted this, it would appear as a smoothed-out version of the graph create in the next step). 
+
+4. Note: this only asks to plot the 60-day rolling beta, not average 60-day rolling beta. To do this, we take bh_beta with the plot() function with parameters of figsize, title (specific to Berkshire Hathaway), and ylabel. 
+
+### Porfolio 2: Paulson & Co.Inc.
+
+1. Following the exact procedure as in Portfolio 1, we create a variable, pco_cov, and assign it to:
+
+pco_cov = whale_navs_dr['PAULSON & CO.INC.'].rolling(window = 60).cov() 
+
+Followed by using the tail function on pco_cov. 
+
+2. We create pco_beta variable and assign it to pco_cov / sp_sixty_var similar to Portfolio 1, followed by the tail function on pco_beta.
+
+3. We create a pcomean_beta variable and assign it to pco_beta.rolling(window=60).mean(), followed by the tail function on pcomean_beta.
+
+4. Exactly like in Portfolio 1, we plot pco_beta with the .plot function and parameters (figsize = (20,15), title = '60-Day Rolling Beta for Paulson & co.Inc.', ylabel = 'Beta').
+
+5. For Questions 1 and 2 answers, please refer to the risk_return_analysis notebook. 
 
 
